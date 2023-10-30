@@ -1,23 +1,23 @@
-let latitude = 22.3072, longitude = 73.1812;
-mapboxgl.accessToken = 'pk.eyJ1IjoiYXBvb3J2ZWxvdXMiLCJhIjoiY2ttZnlyMDgzMzlwNTJ4a240cmEzcG0xNyJ9.-nSyL0Gy2nifDibXJg4fTA';
+let latitude = 22. 7868542, longitude = 8.3643296;
+
+    'top-left'
+mapboxgl.accessToken = "pk.eyJ1IjoiYXBvb3J2ZWxvdXMiLCJhIjoiY2ttZnlyMDgzMzlwNTJ4a240cmEzcG0xNyJ9.-nSyL0Gy2nifDibXJg4fTA";
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11',
+    style: 'mapbox://styles/mapbox/streets-vll',
     center: [longitude, latitude],
-    zoom: 16
+    zoom: 4
 });
-map.addControl(
-    new mapboxgl.GeolocateControl({
-        positionOptions: {
-            enableHighAccuracy: true
-        },
-        trackUSerLocation: true
-    })
-);
+var img1 = document.querySelector("#amber")
+var marker1= new mapboxgl.Marker({
+    element: img1
+})
+.setlnglat([75.85133, 26.98547])
+.addTo(map);
 
 map.addControl(
-    new MapboxDirections({
-        accessToken: mapboxgl.accessToken
-    }),
-    'top-left'
+    new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl
+    })
 );
